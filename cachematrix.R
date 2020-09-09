@@ -29,7 +29,7 @@ cacheSolve <- function(x, ...) {
         return(mat)
     }
     data <- x$get()                              #Get data matrix                                        
-    mat <- solve(data, ...)                      #Find inverse of matrix
+    mat <- solve(data)                      #Find inverse of matrix
     x$setinv(mat)                                #Set the inverse in cache
     mat                                         
     
