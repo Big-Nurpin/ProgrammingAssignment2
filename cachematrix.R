@@ -1,6 +1,7 @@
 ## A pair of functions that compute and cache the inverse
 ## of a matrix to save processing power on already
-## calculated values
+## calculated values. Functions are modeled after mean
+## emaple provided by course instructor
 
 ## Caches a matrix in a matrix-like list
 
@@ -22,5 +23,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## retrieves from cache
 
 cacheSolve <- function(x, ...) {
-
+    mat <- x$getmean()
+    if(!is.null(mat)) {                          #Check if value has already 
+        message("getting cached data")           #cached and returns mat if so
+        return(mat)
+    }
+    data <- x$get()                              #Get data matrix                                        
+    mat <- solve(data, ...)                      #Find inverse of matrix
+    x$setinv(mat)                                #Set the inverse in cache
+    mat                                         
+    
 }
